@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+
+const me = {
+	name: "Alan",
+	lastName: "Dutton",
+};
+
+const pageTitle = "Imprint";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+  		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<h1>Imprint</h1>
+		<p>Information in accordance with Section 5 TMG</p>
+		<p>
+            {me.name} {me.lastName}<br>
+			c/o IP-Management #10339<br>
+            Ludwig-Erhard-Straße 18<br>
+            20459 Hamburg
+		</p>
+        <h2>Contact</h2>
+        <p>
+            Telephone: only on request by E-Mail<br>
+            E-Mail: <a href="mailto:hi@alandutton.de">hi@alandutton.de</a>
+        </p>
+		<h2>Accountability for content</h2>
+        <p>
+            The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents accuracy, 
+            completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content 
+            on these web pages. In this matter, please note that we are not obliged to monitor the transmitted or saved information 
+            of third parties, or investigate circumstances pointing to illegal activity. Our obligations to remove or block the 
+            use of information under generally applicable laws remain unaffected by this as per §§ 8 to 10 of the Telemedia Act (TMG).
+        </p>
+		<h2>Accountability for links</h2>
+        <p>
+            Responsibility for the content of external links (to web pages of third parties) lies solely with the operators of the linked 
+            pages. No violations were evident to us at the time of linking. Should any legal infringement become known to us, we will remove 
+            the respective link immediately.
+        </p>
+		<Footer name={`${me.name} ${me.lastName}`} />
+	</body>
+</html>
