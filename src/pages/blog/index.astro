@@ -1,0 +1,46 @@
+---
+import '../../styles/global.css';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const pageTitle = "Blog — Alan Dutton";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<a href="/" class="back-link">← Alan Dutton</a>
+		<h1>Blog</h1>
+		<p class="blog-intro">Writing about things I'm building and learning.</p>
+
+		<ul class="post-list">
+			{posts.map((post) => (
+				<li class="post-item">
+					<a href={`/blog/${post.id}`} class="post-link">
+						<span class="post-title">{post.data.title}</span>
+						<span class="post-date">
+							{post.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
+						</span>
+					</a>
+					<p class="post-description">{post.data.description}</p>
+				</li>
+			))}
+		</ul>
+
+		<Footer name="Alan Dutton" />
+	</body>
+</html>
